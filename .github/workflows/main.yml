@@ -1,6 +1,7 @@
 name: main
 on:
   workflow_dispatch:
+  repository_dispatch:
 jobs:
   main:
     runs-on: ubuntu-latest
