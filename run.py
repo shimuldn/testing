@@ -170,13 +170,13 @@ def main():
             handle_checkbox(driver)
             solve_hcaptcha(driver, EC)
             
-            print("All done here")
-            driver.close()
-        
-        print("restarting the things")
+        print("All done here")
         driver.close()
-        python = sys.executable
-        os.execl(python, python, *sys.argv)
+        
+#         print("restarting the things")
+#         driver.close()
+#         python = sys.executable
+#         os.execl(python, python, *sys.argv)
 
 
         # print(is_challenge_image_clickable(driver))
