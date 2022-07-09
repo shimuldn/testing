@@ -169,6 +169,9 @@ def main():
             print(f'Doing {i}')
             handle_checkbox(driver)
             solve_hcaptcha(driver, EC)
+            
+            print("All done here")
+            driver.close()
         
         print("restarting the things")
         driver.close()
