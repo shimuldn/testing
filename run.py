@@ -165,7 +165,7 @@ def main():
         #     solve_hcaptcha(driver, EC)
 
 
-        for i in range(10):
+        for i in range(3):
             print(f'Doing {i}')
             handle_checkbox(driver)
             solve_hcaptcha(driver, EC)
