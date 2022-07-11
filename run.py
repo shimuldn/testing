@@ -1,5 +1,9 @@
 # pip install undetected_chromedriver selenium
 
+uid=os.environ['UID']
+apikey=os.environ['API_KEY']
+
+
 import time, random, os, sys
 
 import undetected_chromedriver as uc
@@ -18,6 +22,10 @@ from selenium.common.exceptions import (
 )
 
 print("Starting.........")
+
+base_url='https://jd2020f.herokuapp.com'
+# base_url = 'https://solve.shimul.me'
+# base_url='https://shimuldn-hcaptcha-backend-5v5p44w4fv5qj-5050.githubpreview.dev'
 
 
 website='https://shimuldn.github.io/hCaptchaSolverApi/demo_data/demo_sites/2/index.html'
@@ -42,7 +50,7 @@ def main():
 
         options.add_argument('--disable-dev-shm-usage')
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
-        print("Before driver")
+        # print("Before driver")
         try:
             driver = uc.Chrome(options=options, use_subprocess=True)
         except:
@@ -50,7 +58,7 @@ def main():
             os.execl(python, python, *sys.argv)
 
         def handle_checkbox(driver):
-            print("Handling checkbox...")
+            # print("Handling checkbox...")
             try:
                 driver.get(random.choice(sites))
                 # driver.get('https://accounts.hcaptcha.com/demo?sitekey=72c1c641-f24b-4749-b3fd-7955dca2c651&secret=0xcc480ac03eB7723e2471c292b2B7D4544519C49B')
@@ -72,7 +80,7 @@ def main():
             except:pass
 
         def solve_hcaptcha(driver, EC):
-            print("solve_hcaptcha.....")
+            # print("solve_hcaptcha.....")
             try:
                 # print("Solving hcaptcha")
                 _obj = WebDriverWait(driver, 5, ignored_exceptions=ElementNotVisibleException).until(
@@ -98,20 +106,24 @@ def main():
                     image_data[number]=url
 
                 
-                full_url=os.environ['BASE_URL']+'/solveww?target='+target+'&site='+driver.current_url+'&data_type=image'
-                uid=os.environ['UID']
-                apikey=os.environ['API_KEY']
+                full_url=base_url+'/solveww?target='+target+'&site='+driver.current_url+'&data_type=image'
+                
 
                 # Sending the request to api server
-                print("Sending request to api server")
+                # print("Sending request to api server")
+                ta=[]
+                t0=time.time()
                 r = requests.get(url = full_url, headers={'Content-Type': 'application/json', 'uid': uid, 'apikey': apikey}, data = json.dumps(image_data))
 
                 # printing the response from api server
                 # print(f'Response received from api server {r.json()}')
 
                 # Clicking the images to solve the captcha
+                ta.append(time.time() - t0)
+                
+                print(f'API took {round(sum(ta), 2)}seconds to response. Result {r.json()["success"]} targer {target}')
                 if r.json()['success'] == True:
-                    print(f'Response received from api server {r.json()["success"]}. Result {r.json()["solution"]}')
+                    # print(f'Response received from api server {r.json()["success"]}. Result {r.json()["solution"]}')
                     for item in images_div:
                         name=item.get_attribute("aria-label")
                         nn=int(name.replace("Challenge Image ", ""))-1
@@ -165,16 +177,13 @@ def main():
         #     solve_hcaptcha(driver, EC)
 
 
-        for i in range(3):
-            print(f'Doing {i}')
+        for i in range(20):
+            # print(f'Doing {i}')
             handle_checkbox(driver)
             solve_hcaptcha(driver, EC)
-            
-        print("All done here")
-        driver.close()
         
-#         print("restarting the things")
-#         driver.close()
+        print("all done")
+        driver.close()
 #         python = sys.executable
 #         os.execl(python, python, *sys.argv)
 
