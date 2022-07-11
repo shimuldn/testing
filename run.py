@@ -1,10 +1,13 @@
 # pip install undetected_chromedriver selenium
+import time, random, os, sys
+
+
 
 uid=os.environ['UID']
 apikey=os.environ['API_KEY']
 
 
-import time, random, os, sys
+
 
 import undetected_chromedriver as uc
 from selenium import webdriver
