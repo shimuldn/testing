@@ -44,7 +44,8 @@ sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hca
   'https://shimuldn.github.io/hcaptcha/discord', 'https://shimuldn.github.io/hcaptcha/epic',]
 #    'https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US']
 
-def main():
+driver = uc.Chrome(options=options, use_subprocess=True)
+def main(driver):
     try:
         options = webdriver.ChromeOptions()
         # options.binary_location = "C:\\Users\\ROG\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
@@ -59,7 +60,10 @@ def main():
         options.add_argument("--disable-software-rasterizer")
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
         # print("Before driver")
-        driver = uc.Chrome(options=options, use_subprocess=True)
+        
+        
+        
+#         driver = uc.Chrome(options=options, use_subprocess=True)
         # print(driver)
 
 
@@ -257,4 +261,4 @@ def main():
         print("Error closing browser.")
         driver.close()
 
-main()
+main(driver)
