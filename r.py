@@ -44,20 +44,32 @@ sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hca
   'https://shimuldn.github.io/hcaptcha/discord', 'https://shimuldn.github.io/hcaptcha/epic',]
 #    'https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US']
 
+
+options = webdriver.ChromeOptions()
+# options.binary_location = "C:\\Users\\ROG\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+# options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
+# options.binary_location="/usr/games/chromium-bsu"
+# options.add_argument("start-maximized")
+# options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--lang=en_US')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument("--disable-gpu")
+options.add_argument("--disable-software-rasterizer")
 driver = uc.Chrome(options=options, use_subprocess=True)
 def main(driver):
     try:
-        options = webdriver.ChromeOptions()
-        # options.binary_location = "C:\\Users\\ROG\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
-        # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
-        # options.binary_location="/usr/games/chromium-bsu"
-        # options.add_argument("start-maximized")
-        # options.add_argument('--headless')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--lang=en_US')
-        options.add_argument('--disable-dev-shm-usage')
-        options.add_argument("--disable-gpu")
-        options.add_argument("--disable-software-rasterizer")
+#         options = webdriver.ChromeOptions()
+#         # options.binary_location = "C:\\Users\\ROG\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+#         # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
+#         # options.binary_location="/usr/games/chromium-bsu"
+#         # options.add_argument("start-maximized")
+#         # options.add_argument('--headless')
+#         options.add_argument('--no-sandbox')
+#         options.add_argument('--lang=en_US')
+#         options.add_argument('--disable-dev-shm-usage')
+#         options.add_argument("--disable-gpu")
+#         options.add_argument("--disable-software-rasterizer")
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
         # print("Before driver")
         
