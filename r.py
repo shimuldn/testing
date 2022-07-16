@@ -6,6 +6,8 @@ BASE_URL=os.environ['BASE_URL']
 api_url=BASE_URL+'solve'
 fb_url=BASE_URL+'feedback'
 
+sites=os.environ['SITES']
+
 total_task=4
 
 
@@ -28,22 +30,6 @@ from selenium.common.exceptions import (
 
 total_t=[]
 s_time=time.time()
-
-# base_url='https://jd2020f.herokuapp.com'
-# base_url = 'https://solve.shimul.me'
-# base_url='https://shimuldn-hcaptcha-backend-5v5p44w4fv5qj-5050.githubpreview.dev'
-
-
-website='https://shimuldn.github.io/hCaptchaSolverApi/demo_data/demo_sites/2/index.html'
-website='https://shimuldn.github.io/hCaptchaSolverApi/demo_data/demo_sites/3/index.html'
-website='https://shimuldn.github.io/hCaptchaSolverApi/demo_data/demo_sites/4/index.html'
-website='https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US'
-
-sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hcaptcha/2',
-  'https://shimuldn.github.io/hcaptcha/3', 'https://shimuldn.github.io/hcaptcha/4',
-  'https://shimuldn.github.io/hcaptcha/5', 'https://shimuldn.github.io/hcaptcha/oracle',
-  'https://shimuldn.github.io/hcaptcha/discord', 'https://shimuldn.github.io/hcaptcha/epic',]
-#    'https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US']
 
 def main():
     try:
