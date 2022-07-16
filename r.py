@@ -1,24 +1,19 @@
 
-import os, sys
+import os, sys, time, random
 uid=os.environ['UID']
 apikey=os.environ['API_KEY']
 BASE_URL=os.environ['BASE_URL']
 api_url=BASE_URL+'solve'
 fb_url=BASE_URL+'feedback'
 
-# sites=os.environ['SITES']
-
-sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hcaptcha/2',
-  'https://shimuldn.github.io/hcaptcha/3', 'https://shimuldn.github.io/hcaptcha/4',
-  'https://shimuldn.github.io/hcaptcha/5', 'https://shimuldn.github.io/hcaptcha/oracle',
-  'https://shimuldn.github.io/hcaptcha/discord', 'https://shimuldn.github.io/hcaptcha/epic',]
-#    'https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US']
+total_task=50
 
 
-total_task=4
+start_ts=time.time()
+tt=random.uniform(3, 7)
+end_ts=start_ts+ int(tt*60)
 
 
-import time, random
 import undetected_chromedriver as uc
 from urllib.parse import urlparse
 from selenium import webdriver
@@ -38,6 +33,17 @@ from selenium.common.exceptions import (
 total_t=[]
 s_time=time.time()
 
+# base_url='https://jd2020f.herokuapp.com'
+# base_url = 'https://solve.shimul.me'
+# base_url='https://shimuldn-hcaptcha-backend-5v5p44w4fv5qj-5050.githubpreview.dev'
+
+
+sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hcaptcha/2',
+  'https://shimuldn.github.io/hcaptcha/3', 'https://shimuldn.github.io/hcaptcha/4',
+  'https://shimuldn.github.io/hcaptcha/5', 'https://shimuldn.github.io/hcaptcha/oracle',
+  'https://shimuldn.github.io/hcaptcha/discord', 'https://shimuldn.github.io/hcaptcha/epic',]
+#    'https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US']
+
 def main():
     try:
         options = webdriver.ChromeOptions()
@@ -45,7 +51,7 @@ def main():
         # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
         # options.binary_location="/usr/games/chromium-bsu"
         # options.add_argument("start-maximized")
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--lang=en_US')
         options.add_argument('--disable-dev-shm-usage')
@@ -232,7 +238,13 @@ def main():
             if get_target() != False:
                 target=get_target()
                 do_the_magic(site_key, target)
-        
+            
+            if int(time.time()) > end_ts:
+                print("Times up. closing the worker!")
+            else:
+                print("Time not up yet")
+                time.sleep(30)
+                
         ## Close the browser
 
         total_t.append(time.time() - s_time)
@@ -246,7 +258,3 @@ def main():
         driver.close()
 
 main()
-
-# while True:
-#     import time
-#     time.sleep(1)
