@@ -6,7 +6,14 @@ BASE_URL=os.environ['BASE_URL']
 api_url=BASE_URL+'solve'
 fb_url=BASE_URL+'feedback'
 
-sites=os.environ['SITES']
+# sites=os.environ['SITES']
+
+sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hcaptcha/2',
+  'https://shimuldn.github.io/hcaptcha/3', 'https://shimuldn.github.io/hcaptcha/4',
+  'https://shimuldn.github.io/hcaptcha/5', 'https://shimuldn.github.io/hcaptcha/oracle',
+  'https://shimuldn.github.io/hcaptcha/discord', 'https://shimuldn.github.io/hcaptcha/epic',]
+#    'https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US']
+
 
 total_task=4
 
