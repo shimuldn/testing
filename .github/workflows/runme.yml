@@ -29,4 +29,4 @@ jobs:
             UID2: ${{ secrets.UID2 }}
             API_KEY2: ${{ secrets.API_KEY2 }}
         run: |
-            python run.py
+            python r.py
