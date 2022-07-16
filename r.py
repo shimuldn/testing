@@ -2,7 +2,7 @@
 import os, sys
 uid=os.environ['UID']
 apikey=os.environ['API_KEY']
-api_url=os.environ['BASE_URL']
+BASE_URL=os.environ['BASE_URL']
 api_url=BASE_URL+'solve'
 fb_url=BASE_URL+'feedback'
 
