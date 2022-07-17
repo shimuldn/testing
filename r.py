@@ -60,7 +60,10 @@ def main():
         options.add_argument("--disable-software-rasterizer")
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
         # print("Before driver")
-        driver = uc.Chrome(options=options, use_subprocess=True)
+        try:
+            driver = uc.Chrome(options=options, use_subprocess=True)
+        except:
+            driver = uc.Chrome(options=options, use_subprocess=True)
         # print(driver)
 
 
