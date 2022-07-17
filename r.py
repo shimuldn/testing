@@ -192,7 +192,8 @@ def main():
                 error_txt=WebDriverWait(driver, 1, 0.1).until(
                     EC.visibility_of_element_located((By.XPATH, "//div[@class='error-text']"))
                 )
-                print(f'error found {error_txt.text} order ID {r.json()["id"]}')
+                tg=re.split(r"containing a", target)[-1][1:].strip()
+                print(f'error found {error_txt.text} order ID {r.json()["id"]} target {tg}')
 
 
 
