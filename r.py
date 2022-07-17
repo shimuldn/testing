@@ -55,12 +55,10 @@ def main():
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
         # print("Before driver")
 
-        for i in range(5):
-            try:
-                driver = uc.Chrome(options=options, use_subprocess=True)
-                return driver
-            except:
-                pass
+        try:
+            driver = uc.Chrome(options=options, use_subprocess=True)
+        except:
+            driver = uc.Chrome(options=options, use_subprocess=True)
         # print(driver)
 
 
