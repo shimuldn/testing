@@ -47,7 +47,7 @@ def main():
         # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
         # options.binary_location="/usr/games/chromium-bsu"
         # options.add_argument("start-maximized")
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--lang=en_US')
         options.add_argument('--disable-dev-shm-usage')
@@ -173,7 +173,7 @@ def main():
                             nn=int(item.get_attribute("aria-label").replace("Challenge Image ", ""))-1
                             if nn in st_res.json()['solution']:
                                 
-                                # time.sleep(random.uniform(0.1, 0.5))
+                                time.sleep(random.uniform(0.1, 0.5))
                                 item.click()
                         # print("clicking done")
                         break
@@ -181,7 +181,7 @@ def main():
                         time.sleep(1)
             
 
-            # time.sleep(1)
+            time.sleep(0.5)
             WebDriverWait(driver, 35, ignored_exceptions=ElementClickInterceptedException).until(
                 EC.element_to_be_clickable((By.XPATH, "//div[@class='button-submit button']"))
             ).click()
@@ -240,7 +240,8 @@ def main():
                 print("Timeout closing the browser")
                 driver.close()
             else:
-                print("Not time out yet")
+                # print("Not time out yet")
+                pass
         
         ## Close the browser
 
