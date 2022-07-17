@@ -1,3 +1,4 @@
+
 import os, sys, time, random
 uid=os.environ['UID']
 apikey=os.environ['API_KEY']
@@ -32,6 +33,10 @@ from selenium.common.exceptions import (
 total_t=[]
 s_time=time.time()
 
+# base_url='https://jd2020f.herokuapp.com'
+# base_url = 'https://solve.shimul.me'
+# base_url='https://shimuldn-hcaptcha-backend-5v5p44w4fv5qj-5050.githubpreview.dev'
+
 
 sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hcaptcha/2',
   'https://shimuldn.github.io/hcaptcha/3', 'https://shimuldn.github.io/hcaptcha/4',
@@ -54,11 +59,7 @@ def main():
         options.add_argument("--disable-software-rasterizer")
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
         # print("Before driver")
-
-        try:
-            driver = uc.Chrome(options=options, use_subprocess=True)
-        except:
-            driver = uc.Chrome(options=options, use_subprocess=True)
+        driver = uc.Chrome(options=options, use_subprocess=True)
         # print(driver)
 
 
@@ -237,13 +238,7 @@ def main():
             if get_target() != False:
                 target=get_target()
                 do_the_magic(site_key, target)
-            
-            if int(time.time()) > end_ts:
-                print("Times up. closing the worker!")
-            else:
-                print("Time not up yet")
-                time.sleep(30)
-                
+        
         ## Close the browser
 
         total_t.append(time.time() - s_time)
