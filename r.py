@@ -203,7 +203,7 @@ def main():
                         time.sleep(1)
                     elif st_res.json()['status'] == "error":
 
-                        print("API not able to solve this one. Clicking refresh")
+                        print(f"API not able to solve this one. Clicking refresh target {target}")
                         WebDriverWait(driver, 35, ignored_exceptions=ElementClickInterceptedException).until(
                             EC.element_to_be_clickable(
                                 (By.XPATH, "//div[@class='refresh button']"))
