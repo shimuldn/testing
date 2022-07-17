@@ -17,10 +17,10 @@ jobs:
 #       - name: Remove Chrome
 #         run: sudo apt purge google-chrome-stable
       # Chromium is already installed!
-      - name: Install software
-        run: sudo apt install -y chromium-browser
+#       - name: Install software
+#         run: sudo apt install -y chromium-browser
       - name: Install all necessary packages
-        run: pip install requests webdriver-manager selenium undetected_chromedriver
+        run: pip install requests webdriver-manager selenium undetected_chromedriver pillow
       - name: Run the py script
         env:
             BASE_URL: ${{ secrets.BASE_URL }}
