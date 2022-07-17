@@ -1,5 +1,4 @@
 
-
 import os, sys, time, random
 uid=os.environ['UID']
 apikey=os.environ['API_KEY']
@@ -34,10 +33,6 @@ from selenium.common.exceptions import (
 total_t=[]
 s_time=time.time()
 
-# base_url='https://jd2020f.herokuapp.com'
-# base_url = 'https://solve.shimul.me'
-# base_url='https://shimuldn-hcaptcha-backend-5v5p44w4fv5qj-5050.githubpreview.dev'
-
 
 sites = ['https://shimuldn.github.io/hcaptcha/', 'https://shimuldn.github.io/hcaptcha/2',
   'https://shimuldn.github.io/hcaptcha/3', 'https://shimuldn.github.io/hcaptcha/4',
@@ -60,10 +55,7 @@ def main():
         options.add_argument("--disable-software-rasterizer")
         # driver = uc.Chrome(options=options, use_subprocess=True, driver_executable_path='/home/ubuntu/python/chromedriver')
         # print("Before driver")
-        try:
-            driver = uc.Chrome(options=options, use_subprocess=True)
-        except:
-            driver = uc.Chrome(options=options, use_subprocess=True)
+        driver = uc.Chrome(options=options, use_subprocess=True)
         # print(driver)
 
 
@@ -200,7 +192,7 @@ def main():
                 error_txt=WebDriverWait(driver, 1, 0.1).until(
                     EC.visibility_of_element_located((By.XPATH, "//div[@class='error-text']"))
                 )
-                print(f'error found {error_txt.text}')
+                print(f'error found {error_txt.text} order ID {r.json()["id"]}')
 
 
 
