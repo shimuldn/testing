@@ -1,3 +1,27 @@
+# pip install undetected_chromedriver selenium
+
+
+import random
+import time
+import json
+import requests
+import sys
+import re
+import os
+from selenium.common.exceptions import (
+    ElementNotVisibleException,
+    ElementClickInterceptedException,
+    WebDriverException,
+    TimeoutException,
+)
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium import webdriver
+from urllib.parse import urlparse
+import undetected_chromedriver as uc
+
+
 uid=os.environ['UID']
 apikey=os.environ['API_KEY']
 BASE_URL=os.environ['BASE_URL']
@@ -30,7 +54,7 @@ def main():
         # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
         # options.binary_location="/usr/games/chromium-bsu"
         # options.add_argument("start-maximized")
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         # options.add_argument('--no-sandbox')
         options.add_argument('--lang=en_US')
         options.add_argument('--disable-dev-shm-usage')
@@ -320,3 +344,7 @@ def main():
 
 
 main()
+
+# while True:
+#     import time
+#     time.sleep(1)
