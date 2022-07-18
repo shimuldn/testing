@@ -55,7 +55,7 @@ def main():
         # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
         # options.binary_location="/usr/games/chromium-bsu"
         # options.add_argument("start-maximized")
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--lang=en_US')
         options.add_argument('--disable-dev-shm-usage')
