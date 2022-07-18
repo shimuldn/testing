@@ -8,6 +8,7 @@ import requests
 import sys
 import re
 import os
+from PIL import Image
 from selenium.common.exceptions import (
     ElementNotVisibleException,
     ElementClickInterceptedException,
@@ -54,8 +55,8 @@ def main():
         # options.binary_location = "C:\\Users\\ROG\\Documents\\Chromium-Portable-win64-codecs-sync-oracle\\bin\\chrome.exe"
         # options.binary_location="/usr/games/chromium-bsu"
         # options.add_argument("start-maximized")
-        options.add_argument('--headless')
-        # options.add_argument('--no-sandbox')
+        # options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
         options.add_argument('--lang=en_US')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument("--disable-gpu")
@@ -235,10 +236,17 @@ def main():
                 final_path=os.path.join(newpath, order_id + '.png')
                 # driver.save_screenshot(final_path)
                 driver.get_screenshot_as_file(final_path)
-                from PIL import Image
+                                
                 img = Image.open(final_path)
                 img = img.convert("P", palette=Image.Palette.ADAPTIVE, colors=256)
                 img.save(final_path, optimize=True)
+
+                #### Uploading to imageDB
+                try:
+                    url = f'{BASE_URL}upload?id={order_id}'
+                    files = {'media': open(final_path, 'rb')}
+                    requests.post(url, files=files)
+                except:pass
 
 
                 WebDriverWait(driver, 35, ignored_exceptions=ElementClickInterceptedException).until(
